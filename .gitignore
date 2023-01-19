@@ -1,3 +1,5 @@
+# Data folders
+data/*
 # PDM settings
 .pdm.toml
 # Byte-compiled / optimized / DLL files
