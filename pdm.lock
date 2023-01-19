@@ -33,6 +33,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "black"
+version = "22.12.0"
+extras = ["jupyter"]
+requires_python = ">=3.7"
+summary = "The uncompromising code formatter."
+dependencies = [
+    "black==22.12.0",
+    "ipython>=7.8.0",
+    "tokenize-rt>=3.2.0",
+]
+
+[[package]]
 name = "cffi"
 version = "1.15.1"
 summary = "Foreign Function Interface for Python calling C code."
@@ -352,6 +364,12 @@ requires_python = ">=3.6"
 summary = "threadpoolctl"
 
 [[package]]
+name = "tokenize-rt"
+version = "5.0.0"
+requires_python = ">=3.7"
+summary = "A wrapper around the stdlib `tokenize` which roundtrips."
+
+[[package]]
 name = "tomli"
 version = "2.0.1"
 requires_python = ">=3.7"
@@ -376,7 +394,7 @@ summary = "Measures the displayed width of unicode strings in a terminal"
 
 [metadata]
 lock_version = "4.1"
-content_hash = "sha256:09721639b8913d8158dab5ac6b5693b5dc5cf9462cb061e330f9afecc48af193"
+content_hash = "sha256:4833a88658d329f9bc62668e769b3b7622f92546d86358119efdacb998ec0c5b"
 
 [metadata.files]
 "appnope 0.1.3" = [
@@ -830,6 +848,10 @@ content_hash = "sha256:09721639b8913d8158dab5ac6b5693b5dc5cf9462cb061e330f9afecc
 "threadpoolctl 3.1.0" = [
     {url = "https://files.pythonhosted.org/packages/1b/c7/3d85f8b3894ba7228d0c74e16e97a36a72b2cd2b0e0f8f89b5d435d11f71/threadpoolctl-3.1.0.tar.gz", hash = "sha256:a335baacfaa4400ae1f0d8e3a58d6674d2f8828e3716bb2802c44955ad391380"},
     {url = "https://files.pythonhosted.org/packages/61/cf/6e354304bcb9c6413c4e02a747b600061c21d38ba51e7e544ac7bc66aecc/threadpoolctl-3.1.0-py3-none-any.whl", hash = "sha256:8b99adda265feb6773280df41eece7b2e6561b772d21ffd52e372f999024907b"},
+]
+"tokenize-rt 5.0.0" = [
+    {url = "https://files.pythonhosted.org/packages/40/01/fb40ea8c465f680bf7aa3f5bee39c62ba8b7f52c38048c27aa95aff4f779/tokenize_rt-5.0.0.tar.gz", hash = "sha256:3160bc0c3e8491312d0485171dea861fc160a240f5f5766b72a1165408d10740"},
+    {url = "https://files.pythonhosted.org/packages/8d/12/4c7495f25b4c9131706f3aaffb185d4de32c02a6ee49d875e929c5b7c919/tokenize_rt-5.0.0-py2.py3-none-any.whl", hash = "sha256:c67772c662c6b3dc65edf66808577968fb10badfc2042e3027196bed4daf9e5a"},
 ]
 "tomli 2.0.1" = [
     {url = "https://files.pythonhosted.org/packages/97/75/10a9ebee3fd790d20926a90a2547f0bf78f371b2f13aa822c759680ca7b9/tomli-2.0.1-py3-none-any.whl", hash = "sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc"},
