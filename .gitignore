@@ -1,3 +1,5 @@
+# Adding VSCode options
+.vscode/
 # PDM settings
 .pdm.toml
 # Byte-compiled / optimized / DLL files
