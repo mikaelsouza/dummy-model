@@ -1,0 +1,17 @@
+[tool.pdm]
+
+[project]
+name = "mikas-dummy-model"
+version = "0.0.1"
+description = "A dummy machine learning model to experiment MLOps tools"
+authors = [
+    {name = "Mikael Souza", email = "mikael.souza.cc@gmail.com"},
+]
+dependencies = [
+    "sklearn>=0.0.post1",
+    "numpy>=1.24.1",
+    "pandas>=1.5.2",
+    "dvc>=2.41.1",
+]
+requires-python = ">=3.10"
+license = {text = "MIT"}
