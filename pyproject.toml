@@ -1,4 +1,9 @@
 [tool.pdm]
+[tool.pdm.dev-dependencies]
+dev = [
+    "ipykernel>=6.20.2",
+    "black>=22.12.0",
+]
 
 [project]
 name = ""
@@ -8,11 +13,9 @@ authors = [
     {name = "Mikael Souza", email = "mikael.souza.cc@gmail.com"},
 ]
 dependencies = [
-    "sklearn>=0.0.post1",
     "numpy>=1.24.1",
     "pandas>=1.5.2",
-    "dvc>=2.41.1",
-    "black>=22.12.0",
+    "scikit-learn>=1.2.0",
 ]
 requires-python = ">=3.10"
 license = {text = "MIT"}
