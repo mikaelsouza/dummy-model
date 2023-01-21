@@ -1,11 +1,11 @@
 prepare:
-  test_size: 0.2
-  seed: 42
+  test_size: 0.1
+  seed: 122
 
 featurize:
-  seed: 42
+  seed: 122
 
 train:
-  seed: 42
-  n_est: 100
+  seed: 122
+  n_est: 50
   min_split: 0.010
