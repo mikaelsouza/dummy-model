@@ -1,0 +1,6 @@
+prepare:
+  test_size: 0.2
+  seed: 42
+
+featurize:
+  seed: 42
