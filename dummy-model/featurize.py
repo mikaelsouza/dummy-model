@@ -7,20 +7,19 @@ import yaml
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OrdinalEncoder
 
+# Loading data from params
 params = yaml.safe_load(open("params.yaml"))["featurize"]
+random.seed(params["seed"])
 
+# Settings paths from args
 if len(sys.argv) != 3:
     sys.stderr.write("Arguments error. Usage:\n")
     sys.stderr.write("\tpython prepare.py input_file.csv output_path\n")
     sys.exit(1)
 
-# Loading data from params
-random.seed(params["seed"])
-
-# Settings paths from args
-input_path = sys.argv[1]
-input_train = os.path.join(input_path, "train.parquet")
-input_test = os.path.join(input_path, "test.parquet")
+input_filepath = sys.argv[1]
+input_train = os.path.join(input_filepath, "train.parquet")
+input_test = os.path.join(input_filepath, "test.parquet")
 
 output_path = sys.argv[2]
 output_folder = os.path.join(output_path, "featurized")
