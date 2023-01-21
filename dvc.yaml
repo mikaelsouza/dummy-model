@@ -1,0 +1,46 @@
+stages:
+  evaluate:
+    cmd: python dummy-model/evaluate.py models/artifacts/model.joblib data/featurized/
+    deps:
+    - data/featurized/test.parquet
+    - data/featurized/train.parquet
+    - dummy-model/evaluate.py
+    - models/artifacts/model.joblib
+    outs:
+    - eval/live/plots:
+        cache: false
+    metrics:
+    - eval/live/metrics.json:
+        cache: false
+  prepare:
+    cmd: python dummy-model/prepare.py data/raw/titanic-dataset.csv data/prepared
+    deps:
+    - data/raw/titanic-dataset.csv
+    - dummy-model/prepare.py
+    params:
+    - prepare.seed
+    - prepare.test_size
+    outs:
+    - data/prepared/
+  featurize:
+    cmd: python dummy-model/featurize.py data/prepared data/featurized
+    deps:
+    - data/prepared/test.parquet
+    - data/prepared/train.parquet
+    - dummy-model/featurize.py
+    params:
+    - featurize.seed
+    outs:
+    - data/featurized
+  train:
+    cmd: python dummy-model/train.py data/featurized models/artifacts
+    deps:
+    - data/featurized/test.parquet
+    - data/featurized/train.parquet
+    - dummy-model/train.py
+    params:
+    - train.min_split
+    - train.n_est
+    - train.seed
+    outs:
+    - models/artifacts/
