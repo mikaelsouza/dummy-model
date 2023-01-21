@@ -1,0 +1,85 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python dummy-model/prepare.py data/raw/titanic-dataset.csv data/prepared
+    deps:
+    - path: data/raw/titanic-dataset.csv
+      md5: 7c34ccdb277f3abf9751a1f650960508
+      size: 29474
+    - path: dummy-model/prepare.py
+      md5: 18f1be6231c07e96c07b28d58cd299ea
+      size: 994
+    params:
+      params.yaml:
+        prepare.seed: 122
+        prepare.test_size: 0.1
+    outs:
+    - path: data/prepared/
+      md5: 3c1232adb514398ec540568d26c04a18.dir
+      size: 17399
+      nfiles: 2
+  featurize:
+    cmd: python dummy-model/featurize.py data/prepared data/featurized
+    deps:
+    - path: data/prepared/test.parquet
+      md5: 4174974f5205dd0f341b36191680e3f9
+      size: 7097
+    - path: data/prepared/train.parquet
+      md5: 01e91c8dad6bf8ea3c0f3af2c0fc3344
+      size: 10302
+    - path: dummy-model/featurize.py
+      md5: 7c0a95a9afc2edca741a5fbba1ed00b4
+      size: 1494
+    params:
+      params.yaml:
+        featurize.seed: 122
+    outs:
+    - path: data/featurized
+      md5: a2b5f628f8bb61907b2eb775b184aa16.dir
+      size: 17765
+      nfiles: 2
+  train:
+    cmd: python dummy-model/train.py data/featurized models/artifacts
+    deps:
+    - path: data/featurized/test.parquet
+      md5: 43001c5ac3850a20c307bcc09030737b
+      size: 7280
+    - path: data/featurized/train.parquet
+      md5: d9db6585a0d489f036defbe5a684bd7e
+      size: 10485
+    - path: dummy-model/train.py
+      md5: 3b0c22a14da55c36a309fd9b04aa2c57
+      size: 1147
+    params:
+      params.yaml:
+        train.min_split: 0.01
+        train.n_est: 50
+        train.seed: 122
+    outs:
+    - path: models/artifacts/
+      md5: 59c013ffb271131f565bb31b559eb4c7.dir
+      size: 19302
+      nfiles: 1
+  evaluate:
+    cmd: python dummy-model/evaluate.py models/artifacts/model.joblib data/featurized/
+    deps:
+    - path: data/featurized/test.parquet
+      md5: 43001c5ac3850a20c307bcc09030737b
+      size: 7280
+    - path: data/featurized/train.parquet
+      md5: d9db6585a0d489f036defbe5a684bd7e
+      size: 10485
+    - path: dummy-model/evaluate.py
+      md5: 11ad332f95e098073893c382ec5724de
+      size: 1670
+    - path: models/artifacts/model.joblib
+      md5: 121ddd9e90b5f3d535f21ea2970b8d55
+      size: 19302
+    outs:
+    - path: eval/live/metrics.json
+      md5: 2da4def19b91aab9ccca71da6d97098b
+      size: 135
+    - path: eval/live/plots
+      md5: a606b30a9af659de4627d7acc098c5ea.dir
+      size: 32950
+      nfiles: 6
