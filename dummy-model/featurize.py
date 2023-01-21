@@ -22,9 +22,8 @@ input_train = os.path.join(input_filepath, "train.parquet")
 input_test = os.path.join(input_filepath, "test.parquet")
 
 output_path = sys.argv[2]
-output_folder = os.path.join(output_path, "featurized")
-output_train = os.path.join(output_folder, "train.parquet")
-output_test = os.path.join(output_folder, "test.parquet")
+output_train = os.path.join(output_path, "train.parquet")
+output_test = os.path.join(output_path, "test.parquet")
 
 train_df = pd.read_parquet(input_train)
 test_df = pd.read_parquet(input_test)
@@ -48,7 +47,7 @@ train_pipe_df = pipeline.fit_transform(train_df)
 test_pipe_df = pipeline.transform(test_df)
 
 # Saving featurized data
-if not os.path.exists(output_folder):
-    os.mkdir(output_folder)
+if not os.path.exists(output_path):
+    os.mkdir(output_path)
 train_pipe_df.to_parquet(output_train)
 test_pipe_df.to_parquet(output_test)

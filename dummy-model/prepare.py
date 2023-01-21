@@ -20,9 +20,8 @@ if len(sys.argv) != 3:
 input_filepath = sys.argv[1]
 
 output_path = sys.argv[2]
-output_folder = os.path.join(output_path, "prepared")
-output_train = os.path.join(output_folder, "train.parquet")
-output_test = os.path.join(output_folder, "test.parquet")
+output_train = os.path.join(output_path, "train.parquet")
+output_test = os.path.join(output_path, "test.parquet")
 
 # Preparing data
 data = pd.read_csv(input_filepath)
@@ -31,7 +30,7 @@ data = data.drop(dropped_columns, axis=1).dropna()
 train, test = train_test_split(data, test_size=test_size)
 
 # Saving data to file
-if not os.path.exists(output_folder):
-    os.mkdir(output_folder)
+if not os.path.exists(output_path):
+    os.mkdir(output_path)
 train.to_parquet(output_train)
 test.to_parquet(output_test)
