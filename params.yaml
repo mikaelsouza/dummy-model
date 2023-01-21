@@ -4,3 +4,8 @@ prepare:
 
 featurize:
   seed: 42
+
+train:
+  seed: 42
+  n_est: 100
+  min_split: 0.010
