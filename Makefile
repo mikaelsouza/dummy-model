@@ -33,3 +33,9 @@ evaluate:
 				  -M eval/live/metrics.json \
 				  -O eval/live/plots \
 				  python dummy-model/evaluate.py models/artifacts/model.joblib data/featurized/
+
+clean-steps:
+	dvc remove prepare
+	dvc remove featurize
+	dvc remove train
+	dvc remove evaluate
