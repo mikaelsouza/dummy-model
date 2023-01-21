@@ -17,6 +17,7 @@ dependencies = [
     "pandas>=1.5.2",
     "scikit-learn>=1.2.0",
     "pyarrow>=10.0.1",
+    "pyaml>=21.10.1",
 ]
 requires-python = ">=3.10"
 license = {text = "MIT"}
