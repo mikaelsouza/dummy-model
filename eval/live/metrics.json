@@ -1,0 +1,10 @@
+{
+    "avg_prec": {
+        "train": 1.0,
+        "test": 1.0
+    },
+    "roc_auc": {
+        "train": 1.0,
+        "test": 1.0
+    }
+}
