@@ -11,75 +11,75 @@ stages:
       size: 994
     params:
       params.yaml:
-        prepare.seed: 42
-        prepare.test_size: 0.2
+        prepare.seed: 24
+        prepare.test_size: 0.1
     outs:
     - path: data/prepared/
-      md5: 507289d16f802c9dbc632836815e8726.dir
-      size: 17530
+      md5: 730ffaaf787095180c36ba9782f50ee2.dir
+      size: 17420
       nfiles: 2
   featurize:
     cmd: python dummy-model/featurize.py data/prepared data/featurized
     deps:
     - path: data/prepared/test.parquet
-      md5: ed7219470b766eb7cf026355bd43cd73
-      size: 7630
+      md5: 7ba4089ab2534f27861516a0ee0eec36
+      size: 7119
     - path: data/prepared/train.parquet
-      md5: 89d2a007ca1577d032cbda01f5738354
-      size: 9900
+      md5: d719c77f22763a2700d64d947c082d4a
+      size: 10301
     - path: dummy-model/featurize.py
       md5: 7c0a95a9afc2edca741a5fbba1ed00b4
       size: 1494
     params:
       params.yaml:
-        featurize.seed: 42
+        featurize.seed: 24
     outs:
     - path: data/featurized
-      md5: 0e0e32dbadf86d58bfa6dc6e1a1013be.dir
-      size: 17894
+      md5: 72e26bb9b0fe409ded66e21c93d6eff7.dir
+      size: 17782
       nfiles: 2
   train:
     cmd: python dummy-model/train.py data/featurized models/artifacts
     deps:
     - path: data/featurized/test.parquet
-      md5: dfc7634b574392fa9e6e81a0d67db25b
-      size: 7815
+      md5: a8e2cc915628171a2fbca430cb015120
+      size: 7298
     - path: data/featurized/train.parquet
-      md5: 268e4b07b20196b54a75cd2a391a1e0d
-      size: 10079
+      md5: df54c884c60233fbde1f3f9654d8dfbe
+      size: 10484
     - path: dummy-model/train.py
       md5: 3b0c22a14da55c36a309fd9b04aa2c57
       size: 1147
     params:
       params.yaml:
-        train.min_split: 0.01
-        train.n_est: 100
-        train.seed: 42
+        train.min_split: 0.1
+        train.n_est: 5
+        train.seed: 24
     outs:
     - path: models/artifacts/
-      md5: e216a7c9299f4041d4cd640b331c565f.dir
-      size: 35907
+      md5: cd64540de70219bedb3aeb195a3628ef.dir
+      size: 2735
       nfiles: 1
   evaluate:
     cmd: python dummy-model/evaluate.py models/artifacts/model.joblib data/featurized/
     deps:
     - path: data/featurized/test.parquet
-      md5: dfc7634b574392fa9e6e81a0d67db25b
-      size: 7815
+      md5: a8e2cc915628171a2fbca430cb015120
+      size: 7298
     - path: data/featurized/train.parquet
-      md5: 268e4b07b20196b54a75cd2a391a1e0d
-      size: 10079
+      md5: df54c884c60233fbde1f3f9654d8dfbe
+      size: 10484
     - path: dummy-model/evaluate.py
       md5: 11ad332f95e098073893c382ec5724de
       size: 1670
     - path: models/artifacts/model.joblib
-      md5: 8ec2e8f1ffc7e5b2180916d992ec66f5
-      size: 35907
+      md5: ad6b066f0678d2e7b4df19e17a15335a
+      size: 2735
     outs:
     - path: eval/live/metrics.json
-      md5: a5d1473c2d9452ea7db0c83c71846f69
+      md5: ecc5b532d6ad6de695010e99871eadbb
       size: 165
     - path: eval/live/plots
-      md5: 422200e2525ed80ad37e6b3a1e6d032d.dir
-      size: 44460
+      md5: 9cba86f030767059dffaa647733a94b2.dir
+      size: 36346
       nfiles: 6
