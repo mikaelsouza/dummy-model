@@ -3,6 +3,7 @@
 dev = [
     "ipykernel>=6.20.2",
     "black[jupyter]>=22.12.0",
+    "dvc>=2.47.0",
 ]
 
 [project]
