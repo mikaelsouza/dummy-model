@@ -1,3 +1,5 @@
+# Add pdm local files
+.pdm-python
 # Adding VSCode options
 .vscode/
 # PDM settings
