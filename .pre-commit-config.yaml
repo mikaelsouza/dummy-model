@@ -11,6 +11,7 @@ repos:
         require_serial: true
         additional_dependencies: []
         minimum_pre_commit_version: "2.9.2"
+        verbose: true
       - id: ruff2
         name: ruf2f
         description: "Run 'ruff' for extremely fast Python linting"
@@ -29,6 +30,7 @@ repos:
         minimum_pre_commit_version: 2.9.2
         require_serial: true
         types_or: [python, pyi]
+        verbose: true
       - id: black2
         name: black2
         description: "Black: The uncompromising Python code formatter"
