@@ -4,7 +4,7 @@ repos:
       - id: black
         name: black
         description: "Black: The uncompromising Python code formatter"
-        entry: black
+        entry: pdm run black
         language: python
         minimum_pre_commit_version: 2.9.2
         require_serial: true
