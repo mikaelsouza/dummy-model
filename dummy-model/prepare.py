@@ -4,7 +4,7 @@ import sys
 
 import pandas as pd
 import yaml
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split 
 
 # Loading data from params
 params = yaml.safe_load(open("params.yaml"))["prepare"]
