@@ -4,6 +4,16 @@ repos:
       - id: ruff
         name: ruff
         description: "Run 'ruff' for extremely fast Python linting"
+        entry: pdm run ruff --version
+        language: python
+        "types_or": [python, pyi]
+        args: []
+        require_serial: true
+        additional_dependencies: []
+        minimum_pre_commit_version: "2.9.2"
+      - id: ruff2
+        name: ruf2f
+        description: "Run 'ruff' for extremely fast Python linting"
         entry: pdm run ruff --fix --force-exclude
         language: python
         "types_or": [python, pyi]
@@ -13,6 +23,14 @@ repos:
         minimum_pre_commit_version: "2.9.2"
       - id: black
         name: black
+        description: "Black: The uncompromising Python code formatter"
+        entry: pdm run black --version
+        language: python
+        minimum_pre_commit_version: 2.9.2
+        require_serial: true
+        types_or: [python, pyi]
+      - id: black2
+        name: black2
         description: "Black: The uncompromising Python code formatter"
         entry: pdm run black
         language: python
