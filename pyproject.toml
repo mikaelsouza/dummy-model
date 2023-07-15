@@ -9,8 +9,8 @@ dev = [
 ]
 
 [project]
-name = ""
-version = ""
+name = "dummy-model"
+version = "0.0.1"
 description = ""
 authors = [{ name = "Mikael Souza", email = "mikael.souza.cc@gmail.com" }]
 dependencies = [
