@@ -1,10 +1,21 @@
 repos:
-  - repo: "https://github.com/charliermarsh/ruff-pre-commit"
-    rev: v0.0.265
+  - repo: local
     hooks:
       - id: ruff
-        args: ["--fix"]
-  - repo: "https://github.com/psf/black"
-    rev: 23.3.0
-    hooks:
+        name: ruff
+        description: "Run 'ruff' for extremely fast Python linting"
+        entry: pdm run ruff
+        args:
+          - "--fix"
+          - "--show-fixes"
+        language: python
+        types_or: [python, pyi]
+        stages: ["push"]
+      
       - id: black
+        name: black
+        description: "Black: The uncompromising Python code formatter"
+        entry: pdm run black
+        language: python
+        types_or: [python, pyi]
+        stages: ["push"] 
