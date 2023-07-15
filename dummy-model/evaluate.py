@@ -9,7 +9,6 @@ from sklearn import metrics
 EVAL_PATH = "eval"
 
 
-
 def evaluate(model, df: pd.DataFrame, split: str, label_col: str, live):
     # Split into features and labels
     X = df.drop(label_col, axis=1)
